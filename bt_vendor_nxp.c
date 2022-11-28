@@ -756,6 +756,7 @@ done:
 static int config_uart() {
   int clen;
   unsigned char set_speed_cmd_3m[8] = {0x01, 0x09, 0xFC, 0x04, 0xC0, 0xC6, 0x2D, 0x00};
+  unsigned char set_speed_cmd_1m[8] = {0x01, 0x09, 0xFC, 0x04, 0x00, 0x10, 0x0e, 0x00};
   unsigned char set_speed_cmd[8] = {0x01, 0x09, 0xFC, 0x04, 0x00, 0xC2, 0x01, 0x00};
   unsigned char reset_cmd[4] = {0x01, 0x03, 0x0c, 0x00};
   int resp_size;
@@ -792,6 +793,13 @@ static int config_uart() {
     if (baudrate_bt == 3000000) {
       debug("set fw baudrate as 3000000\n");
       if (write(mchar_fd, set_speed_cmd_3m, clen) != clen) {
+        debug("Failed to write set baud rate command \n");
+        return -1;
+      }
+    }
+    else if (baudrate_bt == 921600) {
+      debug("set fw baudrate as 921600");
+      if (write(mchar_fd, set_speed_cmd_1m, clen) != clen) {
         debug("Failed to write set baud rate command \n");
         return -1;
       }
