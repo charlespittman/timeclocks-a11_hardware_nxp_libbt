@@ -3,6 +3,8 @@
  *  Portions copyright (C) 2009-2012 Broadcom Corporation
  *  Portions copyright 2020 NXP
  *
+ *  Copyright (C) 2022 Kynetics LLC
+ *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
  *  You may obtain a copy of the License at:
